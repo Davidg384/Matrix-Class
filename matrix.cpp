@@ -41,30 +41,37 @@ class matrix{
         void change(int i, int j, float val){cells[i][j] = val;}
 
 
-        friend matrix operator +(matrix A, matrix B){return A;}
-        friend matrix operator -(matrix A, matrix B){return A;}
+        friend matrix operator +(matrix A, matrix B){
+          matrix C;
+          for(int i = 0; i < A.rows; i++){
+            for(int k = 0; k < A.cols; k++){
+              C.cells[i][k] = A.cells[i][k]+B.cells[i][k];
+            }
+          }
+          return C;
+        }
+        friend matrix operator -(matrix A, matrix B){
+          matrix C;
+          for(int i = 0; i < A.rows; i++){
+            for(int k = 0; k < A.cols; k++){
+              C.cells[i][k] = A.cells[i][k]-B.cells[i][k];
+            }
+          }
+          return C;
+        }
         friend matrix operator *(matrix A, matrix B){return A;}
-        friend void operator ++(matrix A){
-          for(int i = 0; i < A.rows; i++){
-            for(int k = 0; k < A.cols; k++){
-              A.cells[i][k]++;
-            }
-          }
-        }
-        friend void operator --(matrix A){
-          for(int i = 0; i < A.rows; i++){
-            for(int k = 0; k < A.cols; k++){
-              A.cells[i][k]--;
-            }
-          }
-        }
 };
 
 int main(){
-  matrix A;
+  matrix A,B;
   A.fill_matrix();
-  system("clear");
+  cout << "A = " << endl;
   A.print();
-  A.print();
+  B.fill_matrix();
+  cout << "B = " << endl;
+  B.print();
+  matrix C = A+B;
+  cout << "C = A+B" << endl;
+  C.print();
   return 0;
 }
