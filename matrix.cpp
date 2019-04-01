@@ -5,8 +5,7 @@ using namespace std;
 class matrix{
     public:
         vector<vector<float>> cells;
-        int rows = 0;
-        int cols = 0;
+        int rows,cols = 0;
         matrix(){}
         void fill_matrix(){
           cout << "Num Rows" << endl;
